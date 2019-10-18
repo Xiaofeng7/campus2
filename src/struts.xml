@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 配置了系列常量 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	
+	<constant name="struts.devMode" value="true"></constant>
+	
+	<constant name="struts.multipart.maxSize" value="104857600"></constant>
+
+	<package name="firstPackage" extends="struts-default">
+		<interceptors>
+			<interceptor name="checkLoginInterceptor" class="checkLogin"></interceptor>
+			
+			<interceptor-stack name="myDefaultStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="checkLoginInterceptor">
+					<param name="excludeMethods">login,register</param><!--不拦截login-->
+				</interceptor-ref>	
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="myDefaultStack"></default-interceptor-ref><!-- 设置拦截器 -->
+		<global-results><!-- 全局逻辑结果视图 -->
+			<result name="login" type="redirect">start</result>
+		</global-results>
+		<!-- 拦截器只能拦截方法 即method，不能拦截具体的网页-->
+		<action name="start" class="AccountAction" method="login">
+			<result name="success">/jsp/home.jsp</result>
+			<result name="login">/index.jsp</result>
+		</action>
+		<action name="second" class="AccountAction" method="second">
+			<result name="success">/jsp/home.jsp</result>
+			<result name="login">/index.jsp</result>
+		</action>
+		<action name="register" class="AccountAction" method="register">
+			<result name="success">/index.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		
+		<action name="setTips" class="TipsAction" method="setTips">
+			<result name="success">/jsp/tips.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		<action name="getTips" class="TipsAction" method="getTips">
+			<result name="success">/jsp/tipsDetails.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		
+		<action name="setClub" class="ClubAction" method="setClub">
+			<result name="success">/jsp/club.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		<action name="getClub" class="ClubAction" method="getClub">
+			<result name="success">/jsp/clubDetails.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		
+		<action name="setCathedra" class="CathedraAction" method="setCathedra">
+			<result name="success">/jsp/cathedra.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		<action name="getCathedra" class="CathedraAction" method="getCathedra">
+			<result name="success">/jsp/cathedraDetails.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		
+		<action name="setCompetition" class="CompetitionAction" method="setCompetition">
+			<!-- 加了报错<interceptor-ref name="myDefaultStack">
+                <param name="fileUpload.maximumSize">500000000</param>
+                <param name="fileUpload.allowedTypes">text/plain,application/vnd.ms-powerpoint,application/vnd.ms-excel,application/vnd.msword</param>
+                <param name="fileUpload.allowedExtensions">.txt,.ppt,.pptx,.xlsx,.xls,.csv,.doc,.docx</param>
+            </interceptor-ref> -->
+          
+			<result name="success">/jsp/competition.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		<action name="doloadAccessory" class="CompetitionAction" method="doloadAccessory">
+			<result name="success" type="stream">
+				<param name="inputName">fileInputStream</param>
+				<param name="contentDisposition">attachment;filename=${filename}</param>
+				<param name="contentType">application/octet-stream</param>
+			</result>
+		</action>
+		<action name="getCompetition" class="CompetitionAction" method="getCompetition">
+			<result name="success">/jsp/competitionDetails.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		
+		<action name="setNotification" class="NotificationAction" method="setNotification">
+			<!-- 加了报错<interceptor-ref name="myDefaultStack">
+                <param name="fileUpload.maximumSize">500000000</param>
+                <param name="fileUpload.allowedTypes">text/plain,application/vnd.ms-powerpoint,application/vnd.ms-excel,application/vnd.msword</param>
+                <param name="fileUpload.allowedExtensions">.txt,.ppt,.pptx,.xlsx,.xls,.csv,.doc,.docx</param>
+            </interceptor-ref> -->
+          
+			<result name="success">/jsp/notification.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		<action name="doloadAccessory" class="NotificationAction" method="doloadAccessory">
+			<result name="success" type="stream">
+				<param name="inputName">fileInputStream</param>
+				<param name="contentDisposition">attachment;filename=${filename}</param>
+				<param name="contentType">application/octet-stream</param>
+			</result>
+		</action>
+		<action name="getNotification" class="NotificationAction" method="getNotification">
+			<result name="success">/jsp/notificationDetails.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		
+		<action name="setAcademy" class="AcademyAction" method="setAcademy">
+			<result name="success">/jsp/academy.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		<action name="getAcademy" class="AcademyAction" method="getAcademy">
+			<result name="success">/jsp/academyDetails.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		
+		<action name="setProfession" class="ProfessionAction" method="setProfession">
+			<result name="success">/jsp/profession.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		<action name="getProfession" class="ProfessionAction" method="getProfession">
+			<result name="success">/jsp/professionDetails.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		
+		<!--      
+		<action name="start" class="CountAction" method="returnSuccess">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="login" class="CountAction" method="login">
+			<result name="success">/HTML/main.jsp</result>
+		</action>
+		<action name="goRegister" class="CountAction" method="returnSuccess">
+			<result name="success">/HTML/registerCount.jsp</result>
+		</action>
+		<action name="registerCount" class="CountAction" method="register">
+			<result name="success">/HTML/completeInformation.jsp</result>
+		</action>
+		<action name="completeInformation" class="InformationAction" method="saveInformation">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="goSendPost" class="CountAction" method="returnSuccess">
+			<result name="success">/HTML/sendPost.jsp</result>
+		</action>
+		<action name="sendPost" class="PostsAction" method="savePost">
+			<result name="success">/HTML/main.jsp</result>
+			<result name="input">/HTML/error.jsp</result>
+		</action>
+		<action name="allPosts" class="PostsAction" method="findAlls">
+			<result name="success">/JSP/allPosts.jsp</result>
+		</action>
+		<action name="post" class="PostsAction" method="getPost">
+			<result name="success">/JSP/Post.jsp</result>
+		</action>
+		<action name="delpost" class="PostsAction" method="deletePost">
+			<result name="success" type="redirect">allPosts</result>
+		</action>
+		<action name="getPostForSaveComment" class="PostsAction" method="getPostForSaveComment">
+			<result name="success">/JSP/Post.jsp</result>
+		</action>
+		<action name="saveComment" class="CommentsAction" method="saveComment">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getPostForSaveComment</param>
+                <param name="currPosts">${currPosts}</param>
+			</result>
+		</action>
+		<action name="delcomment" class="CommentsAction" method="deteleComment">
+			<result name="success" type="redirectAction">
+				<param name="actionName">post</param>
+                <param name="currPost">${currPost}</param>
+			</result>
+		</action>
+		<action name="login" class="loginAction" method="login">
+			<result name="success">/jsp/main.jsp</result>
+		</action>
+		
+		<action name="files" class="filesAction" method="getPage">
+			<result name="success">/jsp/allFiles.jsp</result>
+		</action>
+		 <action name="upload" class="uploadAndDownloadAction" method="upload">
+			<result name="error">/jsp/error.jsp</result>
+			<result name="success">/jsp/welcome.jsp</result>
+		</action>
+		
+		<action name="download" class="uploadAndDownloadAction" method="download">
+			<result name="success" type="stream">
+				<param name="inputName">fileInputStream</param>
+				<param name="contentDisposition">attachment;filename=${filename}</param>
+				<param name="contentType">application/octet-stream</param>
+			</result>
+		</action>
+		
+		<action name="findAll" class="uploadAndDownloadAction" method="findAll">
+			<result name="error">/jsp/error.jsp</result>
+			<result name="success">/jsp/files.jsp</result>
+		</action> -->	
+	</package>
+	<package name="test" extends="struts-default">
+		<!-- <action name="login" class="CountAction" method="login">
+			<result name="success">/HTML/main.jsp</result>
+		</action>
+		<action name="goRegister" class="CountAction" method="returnSuccess">
+			<result name="success">/HTML/registerCount.jsp</result>
+		</action>
+		<action name="registerCount" class="CountAction" method="register">
+			<result name="success">/HTML/completeInformation.jsp</result>
+		</action>
+		<action name="completeInformation" class="InformationAction" method="save">
+			<result name="success">/index.jsp</result>
+		</action> -->
+	</package>
+</struts>

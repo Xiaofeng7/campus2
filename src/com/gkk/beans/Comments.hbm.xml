@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="gkk">
+	<class name="com.gkk.beans.Comments" table="comments">
+		<!-- 映射标识属性 -->
+		<id name="id" type="int" column="id">
+			<generator class="native" />
+		</id>
+		<!-- 映射普通属性 -->
+		<property name="comment" column="comment" />
+		<property name="time" column="time" />
+		<property name="countId" column="countid" />
+		<property name="name" column="name" />
+		<property name="praise" column="praise" />
+		
+		<many-to-one name="post" class="com.gkk.beans.Posts" column="pid"></many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="gkk">
+	<class name="com.gkk.beans.Competition" table="competition">
+		<!-- 映射标识属性 -->
+		<id name="id" type="int" column="id">
+			<generator class="native" />
+		</id>
+		<!-- 映射普通属性 -->
+		<property name="name" column="name" />
+		<property name="content" column="content" />
+		<property name="accessory" column="accessory" />
+		<property name="countId" column="countid" /><!-- 非空 -->
+		<property name="time" column="time" />
+	
+	</class>
+</hibernate-mapping>

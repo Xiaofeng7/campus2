@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="gkk">
+	<class name="com.gkk.beans.AccountNumber" table="accountnumber">
+		<!-- 映射标识属性 -->
+		<id name="id" type="int" column="id">
+			<generator class="native" />
+		</id>
+		<!-- 映射普通属性 -->
+		<property name="userName" column="username" />
+		<property name="passWord" column="passwd" />
+		<property name="nickName" column="nickname" />
+		<property name="birthday" column="birthday" />
+		<property name="tel" column="tel" />
+		<property name="email" column="email" />
+		<property name="address" column="address" />
+		<property name="studentNumber" column="studentnumber" />
+		<property name="university" column="university" />
+		<property name="academy" column="academy" />
+		<property name="profession" column="profession" />
+		<property name="grade" column="grade" />
+		<property name="register" column="register" />
+	
+	</class>
+</hibernate-mapping>

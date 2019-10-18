@@ -1,0 +1,95 @@
+/*失物招领/归还物品 列表下拉样式bootstrap3修改*/
+.panel-default>.panel-heading{
+	background-color: white;
+}
+.panel{
+	border:0;
+	-webkit-box-shadow:0 0 0 rgba(0,0,0,0);
+	box-shadow:0 0 0 rgba(0,0,0,0);
+}
+.panel a{
+	text-decoration: none;
+}
+.panel-body img{
+	width: 100px;
+	height: auto;
+}
+.lostcontent{
+	height:500px;
+	overflow:auto; 
+	position: relative;
+}
+/*申请表样式*/
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; 
+    border: 1px solid #888;
+    width: 80%; 
+}
+
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    color: #000;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: green;
+    cursor: pointer;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+       width: 100%;
+    }
+}
+/*申请表样式*/
+.modal-content{
+	padding: 30px;
+}
+input[type=text],imput[type=file] {
+    width: 100%;
+    margin: 4px 0 18px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type=file]{
+	margin-bottom: 18px;
+	margin-top: 4px;
+}
+.modal button {
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+.cancelbtn {background-color: gray;;margin-right: 10px;}
+
+.signupbtn{background-color: rgb(134,199,36);}
+

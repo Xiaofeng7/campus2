@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/aop 
+       					   http://www.springframework.org/schema/aop/spring-aop.xsd
+       					   http://www.springframework.org/schema/context 
+       					   http://www.springframework.org/schema/context/spring-context.xsd
+       					   http://www.springframework.org/schema/tx 
+       					   http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- 定义数据源Bean，使用C3P0数据源实现 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/campusda?useUnicode=true&amp;characterEncoding=utf8" />
+		<property name="user" value="root" />
+		<property name="password" value="Gkk1997020710*" />
+		<property name="initialPoolSize" value="10"/>
+		<property name="minPoolSize" value="10"/>
+        <property name="maxPoolSize" value="20"/>
+        
+        <property name="idleConnectionTestPeriod" value="18000"/>  
+		<property name="testConnectionOnCheckout" value="true"/>  
+		<!-- <property name="maxPoolSize" value="40" />
+		<property name="minPoolSize" value="1" />
+		<property name="initialPoolSize" value="1" />
+		<property name="maxIdleTime" value="20" /> -->
+	</bean>
+	<bean id="checkLogin" class="com.gkk.interceptor.GoLogin"></bean><!--struts2的拦截器，必须在这里配置一下，不然不起作用  -->
+	<!-- 定义Hibernate的SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- mappingResouces属性用来列出全部映射文件 -->
+		<property name="mappingResources">
+			<list>
+				<value>com/gkk/beans/AccountNumber.hbm.xml</value>
+				<value>com/gkk/beans/Academy.hbm.xml</value>
+				<value>com/gkk/beans/Profession.hbm.xml</value>
+				<value>com/gkk/beans/Notification.hbm.xml</value>
+				<value>com/gkk/beans/Competition.hbm.xml</value>
+				<value>com/gkk/beans/Tips.hbm.xml</value>
+				<value>com/gkk/beans/Cathedra.hbm.xml</value>
+				<value>com/gkk/beans/Club.hbm.xml</value>
+
+			</list>
+		</property>
+		<!-- 定义Hibernate的SessionFactory的属性 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect</prop>
+					<!--org.hibernate.dialect.MySQLInnoDBDialect； 
+					org.hibernate.dialect.MySQLMyISAMDialect  -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.connection.autocommit">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 登录模块 -->
+	<!-- <bean id="accountNumber" class="com.gkk.beans.AccountNumber" scope="prototype"></bean> -->
+	<bean id="AccountAction" class="com.gkk.action.AccountAction" scope="prototype">
+		<property name="accountService" ref="accountService"></property>
+		<property name="academyService" ref="academyService"></property>
+		<property name="tipsService" ref="tipsService"></property>
+		<property name="clubService" ref="clubService"></property>
+		<property name="cathedraService" ref="cathedraService"></property>
+		<property name="competitionService" ref="competitionService"></property>
+		<property name="notificationService" ref="notificationService"></property>
+	</bean>
+	<bean id="accountService" class="com.gkk.service.AccountService" scope="prototype">
+		<property name="accountDao" ref="accountDao"></property>
+		<!-- <property name="accountNumber" ref="accountNumber"></property> -->
+	</bean>
+	<bean id="accountDao" class="com.gkk.dao.AccountDao" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="TipsAction" class="com.gkk.action.TipsAction" scope="prototype">
+		<property name="tipsService" ref="tipsService"></property>
+	</bean>
+	<bean id="tipsService" class="com.gkk.service.TipsService" scope="prototype">
+		<property name="tipsInterfaceDao" ref="tipsInterfaceDao"></property>
+		<!-- <property name="accountNumber" ref="accountNumber"></property> -->
+	</bean>
+	<bean id="tipsInterfaceDao" class="com.gkk.dao.TipsDao" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="ClubAction" class="com.gkk.action.ClubAction" scope="prototype">
+		<property name="clubService" ref="clubService"></property>
+	</bean>
+	<bean id="clubService" class="com.gkk.service.ClubService" scope="prototype">
+		<property name="clubInterfaceDao" ref="clubInterfaceDao"></property>
+		<!-- <property name="accountNumber" ref="accountNumber"></property> -->
+	</bean>
+	<bean id="clubInterfaceDao" class="com.gkk.dao.ClubDao" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="CathedraAction" class="com.gkk.action.CathedraAction" scope="prototype">
+		<property name="cathedraService" ref="cathedraService"></property>
+	</bean>
+	<bean id="cathedraService" class="com.gkk.service.CathedraService" scope="prototype">
+		<property name="cathedraInterfaceDao" ref="cathedraInterfaceDao"></property>
+		<!-- <property name="accountNumber" ref="accountNumber"></property> -->
+	</bean>
+	<bean id="cathedraInterfaceDao" class="com.gkk.dao.CathedraDao" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="CompetitionAction" class="com.gkk.action.CompetitionAction" scope="prototype">
+		<property name="competitionService" ref="competitionService"></property>
+	</bean>
+	<bean id="competitionService" class="com.gkk.service.CompetitionService" scope="prototype">
+		<property name="competitionInterfaceDao" ref="competitionInterfaceDao"></property>
+		<!-- <property name="accountNumber" ref="accountNumber"></property> -->
+	</bean>
+	<bean id="competitionInterfaceDao" class="com.gkk.dao.CompetitionDao" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="NotificationAction" class="com.gkk.action.NotificationAction" scope="prototype">
+		<property name="notificationService" ref="notificationService"></property>
+	</bean>
+	<bean id="notificationService" class="com.gkk.service.NotificationService" scope="prototype">
+		<property name="notificationInterfaceDao" ref="notificationInterfaceDao"></property>
+		<!-- <property name="accountNumber" ref="accountNumber"></property> -->
+	</bean>
+	<bean id="notificationInterfaceDao" class="com.gkk.dao.NotificationDao" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="AcademyAction" class="com.gkk.action.AcademyAction" scope="prototype">
+		<property name="academyService" ref="academyService"></property>
+	</bean>
+	<bean id="academyService" class="com.gkk.service.AcademyService" scope="prototype">
+		<property name="academyInterfaceDao" ref="academyInterfaceDao"></property>
+		<!-- <property name="accountNumber" ref="accountNumber"></property> -->
+	</bean>
+	<bean id="academyInterfaceDao" class="com.gkk.dao.AcademyDao" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="ProfessionAction" class="com.gkk.action.ProfessionAction" scope="prototype">
+		<property name="professionService" ref="professionService"></property>
+		<property name="academyService" ref="academyService"></property>
+	</bean>
+	<bean id="professionService" class="com.gkk.service.ProfessionService" scope="prototype">
+		<property name="professionInterfaceDao" ref="professionInterfaceDao"></property>
+		<!-- <property name="accountNumber" ref="accountNumber"></property> -->
+	</bean>
+	<bean id="professionInterfaceDao" class="com.gkk.dao.ProfessionDao" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 事务详情 ，给ABC进行具体事务设置 -->
+	<!-- <tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="deletePost"/>
+			<tx:method name="deleteComment"/>
+		</tx:attributes>
+	</tx:advice>
+	AOP编程，ABCD 筛选 ＡＢＣ 
+	<aop:config proxy-target-class="true">
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.gkk.service..*.*(..))"/>
+	</aop:config> -->
+</beans>
+

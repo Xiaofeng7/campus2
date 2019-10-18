@@ -1,0 +1,70 @@
+/* =============================附加导航栏的样式（在原来的基础上做了修改）左边=============== */
+    ul.nav-tabs{
+        width: 200px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    }
+    ul.nav-tabs li{
+        text-align: center;
+        margin: 0;
+        border-top: 1px solid #ddd;
+    }
+    ul.nav-tabs li:first-child{
+        border-top: none;
+    }
+    ul.nav-tabs li a{
+        margin: 0;
+        padding: 8px 16px;
+        border-radius: 0;
+    }
+    ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+        color: #fff;
+        background: rgb(134,199,36);
+        border: 1px solid rgb(134,199,36);
+    }
+    ul.nav-tabs li:first-child a{
+        border-radius: 4px 4px 0 0;
+    }
+    ul.nav-tabs li:last-child a{
+        border-radius: 0 0 4px 4px;
+    }
+    ul.nav-tabs.affix{
+        top: 30px; 
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    .active{
+        /*background-color: red !important;*/
+    }
+    #tjwz p{
+        text-align:right;
+        padding: 0 10px 10px 10px;
+        color: white;
+        border-bottom: 1px solid gray;
+    }
+    /*右边课表内容 样式*/
+    #course .jumbotron{
+        background: white;
+        border:1.5px solid #eee;
+    }
+    .scheduleTime{
+        float: right;
+        margin-right: 15px;
+    }
+    .coursePage{
+        text-align: center;
+        list-style: none;
+    }
+    #course{
+        margin-top: 15px;
+    }
+    #course .tab-content{
+        margin-top: 25px;
+    }
+    /*短期课程样式*/
+    .tab-content .clearfix{
+        margin-bottom: 20px;
+    }

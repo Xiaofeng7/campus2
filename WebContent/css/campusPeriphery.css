@@ -1,0 +1,236 @@
+
+/*-- banner-bottom --*/
+.banner-bottom{
+    padding: 4em 0 0 0;
+    background: #f4f7f9;
+}
+.banner-bottom-grid a {
+	text-decoration: none;
+    display: block;
+    box-shadow: 0 0px 1px #CECECE;
+}
+.newh3{
+    padding-top:30px;
+}
+.banner-bottom-grids {
+    margin: 1em 0 0 0;
+}
+.banner-bottom-grid img,.weekend-grid a img{
+	width:100%;
+}
+.destinations ul li{
+	list-style: none;
+    text-align: left;
+	border-bottom:1px ridge #DFDFDF;
+}
+.destinations li.dropdown.active {
+    display: block;
+}
+.destinations ul li:nth-child(6){
+	border-bottom:none;
+}
+.destinations ul li.button a{
+    padding: 17px 20px;
+    margin: 0;
+    display: block;
+    background: url(../images/arrow.png) no-repeat 322px 24px #ffffff;
+    box-shadow: 0 0px 1px #CECECE;
+    color: #337ab7;
+    font-size: 1em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+}
+.destinations ul li a:hover{
+	background: url(../images/arrow.png) no-repeat 322px 24px #FFFFFF;
+}
+.destinations ul li a:focus {
+    outline: none;
+    text-decoration: none;
+}
+li.button {
+	list-style: none;
+	text-align: left;
+}
+li.menu{
+	padding: 0;
+	width: 100%;
+	border-bottom: 1px solid#CD5F4A;
+	margin: 0;
+}
+li.menu:hover {
+	background: #C6533D;
+}
+li.button a:hover{
+	text-decoration:none;
+}
+li.button a span{
+	margin-right: 22px;
+}
+.dropdown{
+	display:none;
+	padding: 0;
+}
+.dropdown li a{
+	display: block;
+}
+.destinations-grid imag{
+	width:100%;
+}
+.destinations-grid-info{
+    padding: 1em;
+    background: #ECECEC;
+}
+.destinations-hotel{
+	float:left;
+	width:50%;
+}
+.destinations-star{
+    float: left;
+    width: 25%;
+    color: #fdd000;
+
+}
+.destinations-price{
+    float: left;
+    width: 25%;
+}
+.glyphicon-star{
+    color: #fdd000;
+    font-size: .8em;
+    margin: 0 .2em;
+}
+.tours{
+	background:#FFF;
+}
+.destinations-grid-info h5{
+	color: #337ab7;
+	font-size:1em;
+	font-weight:600;
+	margin:0;
+}
+.destinations-grid-info p{
+	color:#777;
+	font-size:.9em;
+	margin:1em 0 0 0;
+	line-height:1.8em;
+}
+.destinations-grid-info p.b-period{
+    color: #464646;
+}
+.choose-grids, .top-destinations-bottom, .news-grids-bottom, .customer-grid{
+    padding: 2em;
+    background: #FFF;
+    margin: 1em 0;
+    box-shadow: 0 0px 1px #CECECE;
+}
+.choose-grids-info:nth-child(2){
+	margin:2em 0;
+}
+.glyphicon-globe{
+	font-size: 3em;
+    color: #6fd508;
+}
+
+/*-- top-destinations-grids介绍食堂 --*/
+.top-destinations-bottom{
+	padding:1em;
+}
+.td-left {
+    padding: 0;
+}
+.td-left img{
+	width:100%;
+}
+.td-middle a{
+    font-size: .9em;
+    margin: 0;
+    color: #337ab7;
+    text-decoration: none;
+    box-shadow: 0 0 0;
+    font-weight: 600;
+}
+.td-middle a:hover{
+	color:#6fd508;
+}
+.td-right p{
+    color: #6fd508;
+    font-size: 0.8em;
+    margin: 1em 0 0 0;
+    font-weight: 600;
+}
+.td-grids {
+    margin-bottom: 1em;
+}
+.td-grids:nth-child(4){
+	margin-bottom: 0;
+}
+
+/*-- footer --*/
+.footer{
+    background: rgb(242,242,242);
+    padding: 2em 0;
+}
+.footer-top-grids{
+    padding: 2em 0 0 0;
+}
+.footer-grid h4{
+    color: #292929;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1.5em;
+    margin: 0;
+}
+.footer-grid ul{
+    padding: 0;
+    margin: 1.5em 0 0 0;
+}
+.footer-grid ul li{
+    display: block;
+    margin: .5em 0;
+}
+.footer-grid ul li a{
+	color:#777;
+	font-size:.9em;
+	text-decoration:none;
+}
+.footer-grid ul li a:hover{
+	color:#000;
+}
+
+
+/*文章大小样式	*/
+.article,.shoes{
+    background-color: rgb(244,247,249);
+}
+.article h3{
+   text-align: center;
+   margin-bottom: 20px;
+}
+.article{
+    text-align: center;
+    padding: 20px 0;
+}
+.article p{
+    text-indent: 2em;
+    font-size: 14px;
+    line-height: 30px;
+}
+.article img{
+    margin: 20px 30% 20px 30%;
+    width: 40%;
+}
+#jjglxy,#esbb{
+    padding-top: 30px;
+}
+.fengjing{
+    line-height: 30px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-size: 15px;
+}
+.shoes p{
+    font-size: 18px;
+    line-height: 35px;
+}
